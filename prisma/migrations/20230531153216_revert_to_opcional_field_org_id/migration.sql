@@ -1,0 +1,11 @@
+-- DropForeignKey
+ALTER TABLE "pets" DROP CONSTRAINT "pets_org_id_fkey";
+
+-- DropIndex
+DROP INDEX "pets_org_id_key";
+
+-- AlterTable
+ALTER TABLE "pets" ALTER COLUMN "org_id" DROP NOT NULL;
+
+-- AddForeignKey
+ALTER TABLE "pets" ADD CONSTRAINT "pets_org_id_fkey" FOREIGN KEY ("org_id") REFERENCES "orgs"("id") ON DELETE SET NULL ON UPDATE CASCADE;
